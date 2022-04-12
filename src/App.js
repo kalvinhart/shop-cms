@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import SideNav from "./components/SideNav/SideNav";
 import MainContent from "./components/MainContent/MainContent";
 import Dashboard from "./components/Dashboard/Dashboard";
+import Products from "./components/Products/Products";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <MainContent>
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/products" element={<Products />} />
           </Routes>
         </MainContent>
       </Box>
