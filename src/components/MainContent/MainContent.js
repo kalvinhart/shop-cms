@@ -8,7 +8,8 @@ const MainContent = ({ children }) => {
         width: "100%",
         display: "flex",
         flexDirection: "column",
-        padding: "40px 40px",
+        padding: "40px 80px",
+        backgroundColor: "#f9fbfd",
       }}
     >
       {children}
