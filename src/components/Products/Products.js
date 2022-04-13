@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { CircularProgress, Typography } from "@mui/material";
+import { loadCategories } from "../../slices/categorySlice";
+
+import { Typography } from "@mui/material";
 import Form from "../shared/Form/Form";
 import ProductForm from "./ProductForm/ProductForm";
-import { loadCategories } from "../../slices/categorySlice";
+import Spinner from "../shared/Spinner/Spinner";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -27,7 +29,7 @@ const Products = () => {
   return (
     <>
       {categoryLoading ? (
-        <CircularProgress />
+        <Spinner />
       ) : (
         <>
           <Typography variant="h2" mb={4}>
