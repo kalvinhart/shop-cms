@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { loadCategories, createCategory } from "../../slices/categorySlice";
 
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import Spinner from "../shared/Spinner/Spinner";
 import Form from "../shared/Form/Form";
 import CategoryForm from "./CategoryForm/CategoryForm";
 
@@ -25,7 +26,7 @@ const Categories = () => {
   return (
     <Box>
       {loading ? (
-        <CircularProgress />
+        <Spinner />
       ) : (
         <>
           <Typography variant="h2" mb={3}>
