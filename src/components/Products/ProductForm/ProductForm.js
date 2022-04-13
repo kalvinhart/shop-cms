@@ -1,33 +1,16 @@
-import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
 
 import { Box, Button, FormControl, FormHelperText, Typography } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
-
 import FormInputText from "../../shared/FormInputText/FormInputText";
 import FormInputSelect from "../../shared/FormInputSelect/FormInputSelect";
 import FormInputFile from "../../shared/FormInputFile/FormInputFile";
 
-const ProductForm = () => {
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+const ProductForm = ({ control, errors }) => {
+  const { categories } = useSelector((state) => state.category);
 
   return (
-    <Box
-      component="form"
-      onSubmit={handleSubmit(onSubmit)}
-      sx={{
-        width: "100%",
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
+    <Box sx={{ display: "flex" }}>
       <Box
         sx={{
           width: "880px",
@@ -80,10 +63,7 @@ const ProductForm = () => {
             label="Category"
             {...(errors.categories ? { error: true } : {})}
             control={control}
-            options={[
-              { value: 1, label: "Item 1" },
-              { value: 2, label: "Item 2" },
-            ]}
+            {...(categories ? { options: categories } : {})}
             rules={{ required: true }}
           />
           <FormHelperText>
