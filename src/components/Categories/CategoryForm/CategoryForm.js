@@ -1,9 +1,18 @@
-import { Box, Button, FormControl, FormHelperText, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  FormControl,
+  FormHelperText,
+} from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 
 import FormInputText from "../../shared/FormInputText/FormInputText";
+import { useSelector } from "react-redux";
 
 const CategoryForm = ({ control, errors }) => {
+  const { posting } = useSelector((state) => state.category);
+
   return (
     <>
       <Box
@@ -30,8 +39,13 @@ const CategoryForm = ({ control, errors }) => {
           <FormHelperText>{errors.name ? "This field is required" : " "}</FormHelperText>
         </FormControl>
 
-        <Button type="submit" variant="contained" startIcon={<SaveIcon />}>
-          Save
+        <Button
+          disabled={posting}
+          type="submit"
+          variant="contained"
+          {...(posting ? {} : { startIcon: <SaveIcon /> })}
+        >
+          {posting ? <CircularProgress size={25} /> : "Save"}
         </Button>
       </Box>
     </>
