@@ -6,6 +6,7 @@ const MainContent = ({ children }) => {
       component="main"
       sx={{
         width: "100%",
+        minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
         padding: "40px 80px",
