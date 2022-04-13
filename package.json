@@ -1,5 +1,6 @@
 {
   "name": "shop-cms",
+  "proxy": "http://localhost:5050",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,6 +16,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.29.0",
+    "react-redux": "^7.2.8",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
     "redux": "^4.1.2",
