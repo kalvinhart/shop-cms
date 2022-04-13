@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Paper } from "@mui/material";
 
 const MainContent = ({ children }) => {
   return (
@@ -13,7 +13,9 @@ const MainContent = ({ children }) => {
         backgroundColor: "#f9fbfd",
       }}
     >
-      {children}
+      <Paper sx={{ display: "flex", flexDirection: "column", padding: "40px" }}>
+        {children}
+      </Paper>
     </Box>
   );
 };
