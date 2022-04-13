@@ -28,6 +28,7 @@ export const categorySlice = createSlice({
   name: "categories",
   initialState: {
     loading: false,
+    posting: false,
     categories: null,
     error: false,
   },
@@ -56,6 +57,24 @@ export const categorySlice = createSlice({
       })
       .addCase(loadCategories.rejected, (state, action) => {
         state.loading = false;
+        state.error = action.error.message;
+      })
+      .addCase(createCategory.pending, (state, action) => {
+        state.posting = true;
+      })
+      .addCase(createCategory.fulfilled, (state, action) => {
+        state.posting = false;
+
+        const { _id, name } = action.payload;
+
+        if (state.categories) {
+          state.categories.push({ _id, name });
+        } else {
+          state.categories = [{ _id, name }];
+        }
+      })
+      .addCase(createCategory.rejected, (state, action) => {
+        state.posting = false;
         state.error = action.error.message;
       });
   },
