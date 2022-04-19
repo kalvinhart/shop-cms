@@ -1,6 +1,13 @@
 import { useSelector } from "react-redux";
 
-import { Box, Button, FormControl, FormHelperText, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  CircularProgress,
+  FormControl,
+  FormHelperText,
+  Typography,
+} from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import FormInputText from "../../shared/FormInputText/FormInputText";
 import FormInputSelect from "../../shared/FormInputSelect/FormInputSelect";
@@ -8,6 +15,7 @@ import FormInputFile from "../../shared/FormInputFile/FormInputFile";
 
 const ProductForm = ({ control, errors }) => {
   const { categories } = useSelector((state) => state.category);
+  const { posting } = useSelector((state) => state.product);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -90,11 +98,15 @@ const ProductForm = ({ control, errors }) => {
             control={control}
             label="Quantity"
           />
-          <FormHelperText> </FormHelperText>
         </FormControl>
 
-        <Button type="submit" variant="contained" startIcon={<SaveIcon />}>
-          Save
+        <Button
+          type="submit"
+          variant="contained"
+          disabled={posting}
+          {...(posting ? {} : { startIcon: <SaveIcon /> })}
+        >
+          {posting ? <CircularProgress size={25} /> : "Save"}
         </Button>
       </Box>
 
@@ -106,7 +118,20 @@ const ProductForm = ({ control, errors }) => {
         <Typography variant="h4" mb={4}>
           Upload an Image
         </Typography>
+
         <FormInputFile name="image" control={control} accept="image/*" />
+
+        <FormInputText
+          type="text"
+          name="desc"
+          control={control}
+          label="Description"
+          multiline
+          minRows={10}
+          maxRows={20}
+          fullwidth
+          sx={{ marginTop: "20px", width: "100%" }}
+        />
       </Box>
     </Box>
   );

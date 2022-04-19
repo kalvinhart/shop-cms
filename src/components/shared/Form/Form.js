@@ -13,6 +13,7 @@ const Form = ({ component, submit }) => {
   return (
     <Box
       component="form"
+      encType="multipart/form-data"
       onSubmit={handleSubmit(submit)}
       sx={{
         width: "100%",

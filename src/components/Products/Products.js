@@ -7,6 +7,7 @@ import { Typography } from "@mui/material";
 import Form from "../shared/Form/Form";
 import ProductForm from "./ProductForm/ProductForm";
 import Spinner from "../shared/Spinner/Spinner";
+import { createProduct } from "../../slices/productSlice";
 
 const Products = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const Products = () => {
 
   const onSubmit = (data) => {
     console.log(data);
+    dispatch(createProduct(data));
   };
 
   return (
