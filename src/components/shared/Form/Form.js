@@ -8,13 +8,19 @@ const Form = ({ component, submit }) => {
     handleSubmit,
     control,
     formState: { errors },
+    reset,
   } = useForm();
+
+  const submitFormAndClearInput = (data) => {
+    submit(data);
+    reset();
+  };
 
   return (
     <Box
       component="form"
       encType="multipart/form-data"
-      onSubmit={handleSubmit(submit)}
+      onSubmit={handleSubmit(submitFormAndClearInput)}
       sx={{
         width: "100%",
       }}
