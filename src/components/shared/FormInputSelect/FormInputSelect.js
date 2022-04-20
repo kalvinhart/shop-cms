@@ -23,7 +23,13 @@ const FormInputSelect = ({
   ));
 
   return (
-    <TextField select label={label} {...(error ? { error: true } : {})} {...field}>
+    <TextField
+      select
+      label={label}
+      size="small"
+      {...(error ? { error: true } : {})}
+      {...field}
+    >
       {selectOptions}
     </TextField>
   );

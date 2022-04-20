@@ -21,6 +21,7 @@ const FormInputText = ({
     <TextField
       type={type}
       label={label}
+      size="small"
       {...(error ? { error: true } : {})}
       {...field}
       {...rest}
