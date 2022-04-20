@@ -26,7 +26,10 @@ const ProductForm = ({ control, errors }) => {
           display: "flex",
           flexDirection: "column",
           "& > *:not(:last-child)": {
-            marginBottom: "10px",
+            marginBottom: "5px",
+          },
+          "& > *:last-child": {
+            marginTop: "10px",
           },
           "& .MuiFormHelperText-root": {
             color: "#d32f2f",
