@@ -132,7 +132,6 @@ const ProductForm = ({ control, errors }) => {
           multiline
           minRows={10}
           maxRows={20}
-          fullwidth
           sx={{ marginTop: "20px", width: "100%" }}
         />
       </Box>
