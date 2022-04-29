@@ -12,7 +12,7 @@ export const loadCategories = createAsyncThunk("categories/getCategories", async
 });
 
 export const createCategory = createAsyncThunk(
-  "categories/saveCategory",
+  "categories/createCategory",
   async ({ name }) => {
     try {
       const { data } = await Axios.post("/categories", { name });
@@ -32,20 +32,7 @@ export const categorySlice = createSlice({
     categories: null,
     error: false,
   },
-  reducers: {
-    getCategories: (state, { payload }) => {
-      state.categories = payload;
-    },
-    saveCategory: (state, { payload }) => {
-      if (state.categories) {
-        state.categories.push(payload);
-      } else {
-        state.categories = payload;
-      }
-    },
-    updateCategory: (state) => {},
-    deleteCategory: (state) => {},
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(loadCategories.pending, (state, action) => {
@@ -79,8 +66,5 @@ export const categorySlice = createSlice({
       });
   },
 });
-
-export const { getCategories, saveCategory, updateCategory, deleteCategory } =
-  categorySlice.actions;
 
 export default categorySlice.reducer;
