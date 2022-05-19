@@ -19,9 +19,9 @@ const SideNav = () => {
   return (
     <Drawer
       sx={{
-        width: "200px",
+        width: "250px",
         "& .MuiDrawer-paper": {
-          width: "200px",
+          width: "250px",
         },
       }}
       variant="permanent"
