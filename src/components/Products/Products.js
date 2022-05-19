@@ -1,44 +1,20 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Route, Routes } from "react-router";
+import { useProductsPage } from "../../hooks/useProductsPage/useProductsPage";
 
-import { loadCategories } from "../../slices/categorySlice";
-
-import { Typography } from "@mui/material";
-import Form from "../shared/Form/Form";
-import ProductForm from "./ProductForm/ProductForm";
 import Spinner from "../shared/Spinner/Spinner";
-import { createNewProduct } from "../../slices/productSlice";
+import NewProduct from "./NewProduct/NewProduct";
 
 const Products = () => {
-  const dispatch = useDispatch();
-  const {
-    loading: categoryLoading,
-    categories,
-    error: categoryError,
-  } = useSelector((state) => state.category);
-
-  useEffect(() => {
-    if (!categoryLoading && !categories) {
-      dispatch(loadCategories());
-    }
-  }, [dispatch, loadCategories]);
-
-  const onSubmit = (data) => {
-    console.log(data);
-    dispatch(createNewProduct(data));
-  };
+  const { categoryLoading } = useProductsPage();
 
   return (
     <>
       {categoryLoading ? (
         <Spinner />
       ) : (
-        <>
-          <Typography variant="h2" mb={4}>
-            Add a Product
-          </Typography>
-          <Form component={ProductForm} submit={onSubmit} />
-        </>
+        <Routes>
+          <Route path="/new" element={<NewProduct />} />
+        </Routes>
       )}
     </>
   );
