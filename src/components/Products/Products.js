@@ -3,19 +3,19 @@ import { useProductsPage } from "../../hooks/useProductsPage/useProductsPage";
 
 import Spinner from "../shared/Spinner/Spinner";
 import NewProduct from "./NewProduct/NewProduct";
+import ShowProducts from "./ShowProducts/ShowProducts";
 
 const Products = () => {
-  const { categoryLoading } = useProductsPage();
+  const { categoryLoading, productsLoading } = useProductsPage();
+
+  if (productsLoading || categoryLoading) return <Spinner />;
 
   return (
     <>
-      {categoryLoading ? (
-        <Spinner />
-      ) : (
-        <Routes>
-          <Route path="/new" element={<NewProduct />} />
-        </Routes>
-      )}
+      <Routes>
+        <Route path="/" element={<ShowProducts />} />
+        <Route path="/new" element={<NewProduct />} />
+      </Routes>
     </>
   );
 };
