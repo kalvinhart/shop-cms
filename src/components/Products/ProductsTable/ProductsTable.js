@@ -9,7 +9,7 @@ const ProductsTable = ({ products }) => {
   if (!products) return null;
 
   return (
-    <div style={{ width: 1200, height: 600, display: "flex", flexDirection: "column" }}>
+    <Box sx={{ width: 1200, height: 600, display: "flex", flexDirection: "column" }}>
       <Box
         sx={{
           width: 180,
@@ -32,7 +32,7 @@ const ProductsTable = ({ products }) => {
         checkboxSelection={true}
         onSelectionModelChange={handleSelectionChange}
       />
-    </div>
+    </Box>
   );
 };
 
