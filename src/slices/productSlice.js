@@ -1,5 +1,17 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import Axios from "../utils/axios";
+
+export const loadAllProducts = createAsyncThunk("product/loadAllProducts", async () => {
+  try {
+    const {
+      data: { products },
+    } = await Axios.post("/products");
+    console.log(products);
+    return products;
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 export const createNewProduct = createAsyncThunk(
   "product/createNewProduct",
@@ -33,13 +45,18 @@ export const createNewProduct = createAsyncThunk(
       let updatedProduct;
 
       if (image.length > 0) {
-        const toUpload = new FormData();
-        toUpload.append("id", product._id);
-        toUpload.append("image", image[0], image[0].name);
+        const imageInfo = {
+          id: product._id,
+          name: image[0].name,
+        };
 
         const {
-          data: { imageUrl },
-        } = await Axios.post("/upload", toUpload);
+          data: { url },
+        } = await Axios.post("/upload/s3url", imageInfo);
+
+        await Axios.put(url, image[0]);
+
+        const imageUrl = url.split("?")[0];
 
         const { data } = await Axios.patch(`/products/${product._id}`, {
           imageUrl,
@@ -79,6 +96,17 @@ export const productSlice = createSlice({
       })
       .addCase(createNewProduct.rejected, (state, action) => {
         state.posting = false;
+        state.error = action.error;
+      })
+      .addCase(loadAllProducts.pending, (state, action) => {
+        state.loading = true;
+      })
+      .addCase(loadAllProducts.fulfilled, (state, action) => {
+        state.loading = false;
+        state.products = action.payload;
+      })
+      .addCase(loadAllProducts.rejected, (state, action) => {
+        state.loading = false;
         state.error = action.error;
       });
   },
