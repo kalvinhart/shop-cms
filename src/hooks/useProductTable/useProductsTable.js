@@ -13,7 +13,7 @@ export const useProductsTable = (products) => {
   const goToEditPage = () => {
     if (selectedRows.length === 0 || selectedRows.length > 1) return;
     const id = selectedRows[0];
-    navigate(`/edit/${id}`);
+    navigate(`/products/edit/${id}`);
   };
 
   const buttonIsDisabled = selectedRows.length === 0;
