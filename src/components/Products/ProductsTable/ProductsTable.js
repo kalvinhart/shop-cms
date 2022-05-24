@@ -26,10 +26,15 @@ const ProductsTable = ({ products }) => {
           marginBottom: "20px",
         }}
       >
-        <Button variant="contained" onClick={goToNewPage}>
+        <Button variant="contained" sx={{ marginRight: "auto" }} onClick={goToNewPage}>
           Add Product
         </Button>
-        <Button variant="outlined" onClick={goToEditPage} disabled={buttonIsDisabled}>
+        <Button
+          variant="outlined"
+          sx={{ marginRight: "10px" }}
+          onClick={goToEditPage}
+          disabled={buttonIsDisabled}
+        >
           Edit
         </Button>
         <Button
