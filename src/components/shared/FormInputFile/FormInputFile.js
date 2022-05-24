@@ -21,7 +21,7 @@ const FormInputFile = ({ name, control, rules = {}, accept }) => {
 
   return (
     <>
-      <InputLabel htmlFor={name}>
+      <InputLabel sx={{ alignSelf: "flex-end" }} htmlFor={name}>
         <Input
           id={name}
           name={name}

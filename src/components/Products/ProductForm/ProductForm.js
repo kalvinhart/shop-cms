@@ -13,7 +13,7 @@ import FormInputText from "../../shared/FormInputText/FormInputText";
 import FormInputSelect from "../../shared/FormInputSelect/FormInputSelect";
 import FormInputFile from "../../shared/FormInputFile/FormInputFile";
 
-const ProductForm = ({ control, errors }) => {
+const ProductForm = ({ control, errors, image }) => {
   const { categories } = useSelector((state) => state.category);
   const { posting } = useSelector((state) => state.product);
 
@@ -122,7 +122,32 @@ const ProductForm = ({ control, errors }) => {
           Upload an Image
         </Typography>
 
-        <FormInputFile name="image" control={control} accept="image/*" />
+        <Box
+          sx={{
+            width: "80%",
+            display: "flex",
+            flexWrap: "wrap",
+            marginBottom: "50px",
+          }}
+        >
+          <FormInputFile name="image" control={control} accept="image/*" />
+          {image && (
+            <>
+              <Typography
+                component="h5"
+                sx={{ flexBasis: "100%", marginBottom: "10px", marginTop: "20px" }}
+              >
+                Current Image:
+              </Typography>
+              <Box
+                component="img"
+                src={image}
+                alt="Product Image"
+                sx={{ width: "250px", marginRight: "auto" }}
+              />
+            </>
+          )}
+        </Box>
 
         <FormInputText
           type="text"
