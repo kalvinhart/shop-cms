@@ -99,6 +99,31 @@ export const updateProduct = createAsyncThunk("product/updateProduct", async (da
   }
 });
 
+export const deleteSingleProduct = createAsyncThunk(
+  "product/deleteSingle",
+  async (id) => {
+    console.log(id);
+
+    try {
+      const { data } = await Axios.delete(`/products/${id}`);
+      console.log(data);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+);
+
+export const deleteProducts = createAsyncThunk("product/deleteProducts", async (ids) => {
+  console.log(ids);
+  try {
+    await Axios.patch("/products", { ids });
+    return ids;
+  } catch (err) {
+    console.log(err);
+  }
+});
+
 export const productSlice = createSlice({
   name: "product",
   initialState: {
@@ -140,14 +165,35 @@ export const productSlice = createSlice({
           }
         });
       })
+      .addCase(deleteSingleProduct.fulfilled, (state, action) => {
+        state.posting = false;
+        state.products = state.products.filter((item) => item._id !== action.payload);
+      })
+      .addCase(deleteProducts.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.posting = false;
+        state.products = state.products.filter(
+          (item) => !action.payload.includes(item._id)
+        );
+      })
       .addMatcher(
-        isAnyOf(createNewProduct.pending, updateProduct.pending),
+        isAnyOf(
+          createNewProduct.pending,
+          updateProduct.pending,
+          deleteProducts.pending,
+          deleteSingleProduct.pending
+        ),
         (state, action) => {
           state.posting = true;
         }
       )
       .addMatcher(
-        isAnyOf(createNewProduct.rejected, updateProduct.rejected),
+        isAnyOf(
+          createNewProduct.rejected,
+          updateProduct.rejected,
+          deleteProducts.rejected,
+          deleteSingleProduct.rejected
+        ),
         (state, action) => {
           state.posting = false;
           state.error = true;

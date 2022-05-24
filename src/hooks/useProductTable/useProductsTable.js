@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import { deleteProducts, deleteSingleProduct } from "../../slices/productSlice";
 
 export const useProductsTable = (products) => {
+  const dispatch = useDispatch();
   const [selectedRows, setSelectedRows] = useState([]);
 
   const navigate = useNavigate();
@@ -14,6 +17,21 @@ export const useProductsTable = (products) => {
     if (selectedRows.length === 0 || selectedRows.length > 1) return;
     const id = selectedRows[0];
     navigate(`/products/edit/${id}`);
+  };
+
+  const goToNewPage = () => {
+    navigate("/products/new");
+  };
+
+  const handleDelete = () => {
+    console.log(selectedRows);
+    if (selectedRows.length === 0) return;
+
+    if (selectedRows.length > 1) {
+      dispatch(deleteProducts(selectedRows));
+    } else {
+      dispatch(deleteSingleProduct(selectedRows[0]));
+    }
   };
 
   const buttonIsDisabled = selectedRows.length === 0;
@@ -62,5 +80,7 @@ export const useProductsTable = (products) => {
     buttonIsDisabled,
     handleSelectionChange: (newSelection) => handleSelectionChange(newSelection),
     goToEditPage: () => goToEditPage(),
+    goToNewPage: () => goToNewPage(),
+    handleDelete: () => handleDelete(),
   };
 };
