@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
 import Axios from "../utils/axios";
+import { uploadImage } from "../utils/uploadImage";
 
 export const loadAllProducts = createAsyncThunk("product/loadAllProducts", async () => {
   try {
@@ -45,23 +46,7 @@ export const createNewProduct = createAsyncThunk(
       let updatedProduct;
 
       if (image.length > 0) {
-        const imageInfo = {
-          id: product._id,
-          name: image[0].name,
-        };
-
-        const {
-          data: { url },
-        } = await Axios.post("/upload/s3url", imageInfo);
-
-        await Axios.put(url, image[0]);
-
-        const imageUrl = url.split("?")[0];
-
-        const { data } = await Axios.patch(`/products/${product._id}`, {
-          imageUrl,
-        });
-        updatedProduct = data.updatedProduct;
+        updatedProduct = await uploadImage(product, image);
       }
 
       return image.length > 0 ? updatedProduct : product;
@@ -70,6 +55,49 @@ export const createNewProduct = createAsyncThunk(
     }
   }
 );
+
+export const updateProduct = createAsyncThunk("product/updateProduct", async (data) => {
+  console.log(data);
+  const {
+    _id: id,
+    name,
+    brand,
+    desc: description,
+    size,
+    color,
+    categories,
+    price,
+    stockQty,
+    image,
+  } = data;
+
+  const newDetails = {
+    name,
+    brand,
+    description,
+    size,
+    color,
+    categories,
+    price,
+    stockQty,
+  };
+
+  try {
+    const { data } = await Axios.patch(`/products/${id}`, newDetails);
+    console.log(data);
+    const imageIsObject = typeof image === "object";
+
+    let updatedProduct;
+
+    if (imageIsObject) {
+      updatedProduct = await uploadImage(data, image);
+    }
+
+    return imageIsObject ? updatedProduct : data;
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 export const productSlice = createSlice({
   name: "product",
@@ -82,22 +110,6 @@ export const productSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(createNewProduct.pending, (state, action) => {
-        state.posting = true;
-      })
-      .addCase(createNewProduct.fulfilled, (state, action) => {
-        state.posting = false;
-
-        if (state.products) {
-          state.products.push(action.payload);
-        } else {
-          state.products = [action.payload];
-        }
-      })
-      .addCase(createNewProduct.rejected, (state, action) => {
-        state.posting = false;
-        state.error = action.error;
-      })
       .addCase(loadAllProducts.pending, (state, action) => {
         state.loading = true;
       })
@@ -108,7 +120,39 @@ export const productSlice = createSlice({
       .addCase(loadAllProducts.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error;
-      });
+      })
+      .addCase(createNewProduct.fulfilled, (state, action) => {
+        state.posting = false;
+
+        if (state.products) {
+          state.products.push(action.payload);
+        } else {
+          state.products = [action.payload];
+        }
+      })
+      .addCase(updateProduct.fulfilled, (state, action) => {
+        state.posting = false;
+        state.products = state.products.map((item) => {
+          if (item._id === action.payload._id) {
+            return action.payload;
+          } else {
+            return item;
+          }
+        });
+      })
+      .addMatcher(
+        isAnyOf(createNewProduct.pending, updateProduct.pending),
+        (state, action) => {
+          state.posting = true;
+        }
+      )
+      .addMatcher(
+        isAnyOf(createNewProduct.rejected, updateProduct.rejected),
+        (state, action) => {
+          state.posting = false;
+          state.error = true;
+        }
+      );
   },
 });
 
