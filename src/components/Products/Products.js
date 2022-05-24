@@ -1,45 +1,23 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { Route, Routes } from "react-router";
+import { useProductsPage } from "../../hooks/useProductsPage/useProductsPage";
 
-import { loadCategories } from "../../slices/categorySlice";
-
-import { Typography } from "@mui/material";
-import Form from "../shared/Form/Form";
-import ProductForm from "./ProductForm/ProductForm";
 import Spinner from "../shared/Spinner/Spinner";
-import { createNewProduct } from "../../slices/productSlice";
+import EditProduct from "./EditProduct/EditProduct";
+import NewProduct from "./NewProduct/NewProduct";
+import ShowProducts from "./ShowProducts/ShowProducts";
 
 const Products = () => {
-  const dispatch = useDispatch();
-  const {
-    loading: categoryLoading,
-    categories,
-    error: categoryError,
-  } = useSelector((state) => state.category);
+  const { categoryLoading, productsLoading } = useProductsPage();
 
-  useEffect(() => {
-    if (!categoryLoading && !categories) {
-      dispatch(loadCategories());
-    }
-  }, [dispatch, loadCategories]);
-
-  const onSubmit = (data) => {
-    console.log(data);
-    dispatch(createNewProduct(data));
-  };
+  if (productsLoading || categoryLoading) return <Spinner />;
 
   return (
     <>
-      {categoryLoading ? (
-        <Spinner />
-      ) : (
-        <>
-          <Typography variant="h2" mb={4}>
-            Add a Product
-          </Typography>
-          <Form component={ProductForm} submit={onSubmit} />
-        </>
-      )}
+      <Routes>
+        <Route path="/" element={<ShowProducts />} />
+        <Route path="/new" element={<NewProduct />} />
+        <Route path="/edit/:id" element={<EditProduct />} />
+      </Routes>
     </>
   );
 };
