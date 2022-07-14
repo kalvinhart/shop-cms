@@ -6,7 +6,7 @@ export const loadAllProducts = createAsyncThunk("product/loadAllProducts", async
   try {
     const {
       data: { products },
-    } = await Axios.post("/products");
+    } = await Axios.get("/products");
     console.log(products);
     return products;
   } catch (err) {
