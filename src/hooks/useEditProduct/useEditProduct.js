@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { loadAllProducts, updateProduct } from "../../slices/productSlice";
+import { updateProduct } from "../../slices/productSlice";
 
 export const useEditProduct = () => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export const useEditProduct = () => {
       const product = products.filter((item) => item._id === id)[0];
       setCurrentProduct(product);
     }
-  }, [loading, products, dispatch, loadAllProducts, setCurrentProduct]);
+  }, [id, loading, products, dispatch, setCurrentProduct]);
 
   useEffect(() => {
     if (currentProduct?.name) {
