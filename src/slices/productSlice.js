@@ -6,7 +6,7 @@ export const loadAllProducts = createAsyncThunk("product/loadAllProducts", async
   try {
     const {
       data: { products },
-    } = await Axios.get("/products");
+    } = await Axios.get("/products?pagesize=100");
     console.log(products);
     return products;
   } catch (err) {
@@ -78,7 +78,7 @@ export const updateProduct = createAsyncThunk("product/updateProduct", async (da
     size,
     color,
     categories,
-    price,
+    price: parseFloat(Number(price).toFixed(2)),
     stockQty,
   };
 
