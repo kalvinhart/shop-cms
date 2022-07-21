@@ -1,4 +1,5 @@
-import Axios, { AxiosResponse } from "axios";
+import { AxiosResponse } from "axios";
+import Axios from "../../utils/axios";
 import { IHttpService } from "./IHttpService";
 
 export default class HttpService implements IHttpService {
