@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import Axios from "../utils/axios";
+import Axios from "../../utils/axios";
 
 export const loadCategories = createAsyncThunk("categories/getCategories", async () => {
   try {

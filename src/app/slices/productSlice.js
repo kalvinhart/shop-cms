@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, isAnyOf } from "@reduxjs/toolkit";
-import Axios from "../utils/axios";
-import { uploadImage } from "../utils/uploadImage";
+import Axios from "../../utils/axios";
+import { uploadImage } from "../../utils/uploadImage";
 
 export const loadAllProducts = createAsyncThunk("product/loadAllProducts", async () => {
   try {

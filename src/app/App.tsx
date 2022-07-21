@@ -5,10 +5,10 @@ import { store } from "./store";
 
 import CssBaseline from "@mui/material/CssBaseline";
 
-import Dashboard from "./components/Dashboard/Dashboard";
-import Products from "./components/Products/Products";
-import Categories from "./components/Categories/Categories";
-import Layout from "./layout/Layout";
+import Dashboard from "../components/Dashboard/Dashboard";
+import Products from "../components/Products/Products";
+import Categories from "../components/Categories/Categories";
+import Layout from "../layout/Layout";
 
 const App = () => {
   return (
