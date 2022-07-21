@@ -28,6 +28,7 @@ const SideNav = () => {
       anchor="left"
     >
       <Toolbar />
+      <Toolbar />
       <List>
         <ListItem button onClick={() => navigate("/")}>
           <ListItemIcon>
