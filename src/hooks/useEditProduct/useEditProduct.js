@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { updateProduct } from "../../slices/productSlice";
+import { updateProduct } from "../../app/slices/productSlice";
 
 export const useEditProduct = () => {
   const dispatch = useDispatch();

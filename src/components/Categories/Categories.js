@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { loadCategories, createCategory } from "../../slices/categorySlice";
+import { loadCategories, createCategory } from "../../app/slices/categorySlice";
 
 import { Box, Typography } from "@mui/material";
 import Spinner from "../shared/Spinner/Spinner";
