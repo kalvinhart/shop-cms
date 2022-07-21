@@ -1,6 +1,10 @@
 import { Box, Paper } from "@mui/material";
 
-const MainContent = ({ children }) => {
+type Props = {
+  children: JSX.Element;
+};
+
+const MainContent = ({ children }: Props) => {
   return (
     <Box
       component="main"
@@ -9,7 +13,7 @@ const MainContent = ({ children }) => {
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        padding: "40px 80px",
+        padding: "100px 80px 80px 80px",
         backgroundColor: "#f9fbfd",
       }}
     >
