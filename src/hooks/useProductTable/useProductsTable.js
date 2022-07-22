@@ -37,12 +37,12 @@ export const useProductsTable = (products) => {
   const buttonIsDisabled = selectedRows.length === 0;
 
   const columns = [
-    { field: "name", headerName: "Name", width: 300 },
-    { field: "brand", headerName: "Brand", width: 200 },
-    { field: "size", headerName: "Size", width: 80 },
+    { field: "name", headerName: "Name", width: 400 },
+    { field: "brand", headerName: "Brand", width: 250 },
+    { field: "category", headerName: "Category", width: 250 },
+    { field: "price", headerName: "Price", width: 80 },
     { field: "color", headerName: "Colour", width: 80 },
-    { field: "category", headerName: "Category", width: 200 },
-    { field: "price", headerName: "Price", width: 75 },
+    { field: "size", headerName: "Size", width: 80 },
     { field: "quantity", headerName: "Quantity", width: 80 },
     { field: "amountSold", headerName: "Sales", width: 80 },
   ];
