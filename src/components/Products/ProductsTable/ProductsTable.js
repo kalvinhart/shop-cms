@@ -16,7 +16,7 @@ const ProductsTable = ({ products }) => {
   if (!products) return null;
 
   return (
-    <Box sx={{ width: 1200, height: 600, display: "flex", flexDirection: "column" }}>
+    <Box sx={{ width: "100%", height: 600, display: "flex", flexDirection: "column" }}>
       <Box
         sx={{
           width: 350,
@@ -47,6 +47,7 @@ const ProductsTable = ({ products }) => {
         </Button>
       </Box>
       <DataGrid
+        style={{ width: "100%" }}
         columns={columns}
         rows={rows}
         checkboxSelection={true}
