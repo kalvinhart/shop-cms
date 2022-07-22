@@ -10,22 +10,26 @@ import Products from "../components/Products/Products";
 import Categories from "../components/Categories/Categories";
 import Layout from "../layout/Layout";
 import RequireAuth from "../components/RequireAuth/RequireAuth";
+import { Login } from "../components/Login";
 
 const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
         <CssBaseline />
-        <Layout>
-          <Routes>
-            {/* Authorised Routes */}
-            <Route element={<RequireAuth allowedRoles={[1987]} />}>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/products/*" element={<Products />} />
-              <Route path="/categories/*" element={<Categories />} />
+        <Routes>
+          {/* Public Routes */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Authorised Routes */}
+          <Route element={<RequireAuth allowedRoles={[1987]} />}>
+            <Route path="/" element={<Layout />}>
+              <Route path="dashboard" element={<Dashboard />} />
+              <Route path="products/*" element={<Products />} />
+              <Route path="categories/*" element={<Categories />} />
             </Route>
-          </Routes>
-        </Layout>
+          </Route>
+        </Routes>
       </BrowserRouter>
     </Provider>
   );

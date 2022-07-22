@@ -1,13 +1,10 @@
 import { Box } from "@mui/system";
+import { Outlet } from "react-router-dom";
 import MainContent from "../components/MainContent/MainContent";
 import SideNav from "../components/SideNav/SideNav";
 import { Header } from "./Header";
 
-type Props = {
-  children: JSX.Element;
-};
-
-const Layout = ({ children }: Props) => {
+const Layout = () => {
   return (
     <>
       <Header />
@@ -17,7 +14,9 @@ const Layout = ({ children }: Props) => {
         }}
       >
         <SideNav />
-        <MainContent>{children}</MainContent>
+        <MainContent>
+          <Outlet />
+        </MainContent>
       </Box>
     </>
   );
