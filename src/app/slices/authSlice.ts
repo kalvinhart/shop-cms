@@ -21,12 +21,12 @@ const initialState: InitialState = {
 export const signIn = createAsyncThunk<User, UserCredentials, AsyncThunkConfig<any>>(
   "auth/signIn",
   async (
-    { username, password }: UserCredentials,
+    { email, password }: UserCredentials,
     { rejectWithValue, extra: { authApi } }
   ) => {
     try {
       const data = await authApi.signIn({
-        username,
+        email,
         password,
       });
 

@@ -8,9 +8,9 @@ export default class AuthService implements IAuthService {
     this.#httpService = httpService;
   }
 
-  async signIn({ username, password }: UserCredentials): Promise<User> {
+  async signIn({ email, password }: UserCredentials): Promise<User> {
     const user = await this.#httpService.post<UserCredentials, User>("/users/login", {
-      username,
+      email,
       password,
     });
     return user;

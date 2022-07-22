@@ -5,7 +5,12 @@ export type User = {
 };
 
 export type UserCredentials = {
-  username: string;
+  email: string;
   password: string;
   token?: string;
+};
+
+export type AuthError = {
+  error: boolean;
+  message: string;
 };
