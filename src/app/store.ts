@@ -4,6 +4,7 @@ import productReducer from "./slices/productSlice";
 import authReducer from "./slices/authSlice";
 
 import AuthService from "../services/AuthService";
+import { IAuthService } from "../services/AuthService/IAuthService";
 
 const authApi = AuthService;
 
@@ -18,3 +19,10 @@ export const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;
+
+export interface AsyncThunkConfig<T> {
+  extra: {
+    authApi: IAuthService;
+  };
+  rejectValue: T;
+}
