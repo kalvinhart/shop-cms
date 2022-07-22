@@ -29,7 +29,7 @@ const Categories = () => {
         <Spinner />
       ) : (
         <>
-          <Typography variant="h2" mb={3}>
+          <Typography variant="h4" mb={3}>
             Add a Category
           </Typography>
           <Form component={CategoryForm} submit={onSubmit} />

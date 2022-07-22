@@ -8,7 +8,7 @@ const NewProduct = () => {
   const { onSubmit } = useNewProduct();
   return (
     <>
-      <Typography variant="h2" mb={4}>
+      <Typography variant="h4" mb={4}>
         Add a Product
       </Typography>
       <Form component={ProductForm} submit={onSubmit} />

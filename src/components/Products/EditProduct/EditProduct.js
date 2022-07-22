@@ -9,7 +9,7 @@ const EditProduct = () => {
 
   return (
     <>
-      <Typography variant="h2" mb={4}>
+      <Typography variant="h4" mb={4}>
         Edit a Product
       </Typography>
       <Form

@@ -9,7 +9,7 @@ const ShowProducts = () => {
 
   return (
     <>
-      <Typography variant="h2" mb={4}>
+      <Typography variant="h4" mb={4}>
         All Products
       </Typography>
       <ProductsTable products={products} />
