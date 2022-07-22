@@ -9,6 +9,7 @@ import Dashboard from "../components/Dashboard/Dashboard";
 import Products from "../components/Products/Products";
 import Categories from "../components/Categories/Categories";
 import Layout from "../layout/Layout";
+import RequireAuth from "../components/RequireAuth/RequireAuth";
 
 const App = () => {
   return (
@@ -17,9 +18,12 @@ const App = () => {
         <CssBaseline />
         <Layout>
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/products/*" element={<Products />} />
-            <Route path="/categories/*" element={<Categories />} />
+            {/* Authorised Routes */}
+            <Route element={<RequireAuth allowedRoles={[1987]} />}>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/products/*" element={<Products />} />
+              <Route path="/categories/*" element={<Categories />} />
+            </Route>
           </Routes>
         </Layout>
       </BrowserRouter>
