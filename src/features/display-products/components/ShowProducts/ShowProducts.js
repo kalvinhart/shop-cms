@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import { useShowProducts } from "../../../hooks/useShowProducts/useShowProducts";
+import { useShowProducts } from "../../../../hooks/useShowProducts/useShowProducts";
 import ProductsTable from "../ProductsTable/ProductsTable";
 
 const ShowProducts = () => {

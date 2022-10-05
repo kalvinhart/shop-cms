@@ -1,7 +1,7 @@
 import { Box } from "@mui/system";
 import { Outlet } from "react-router-dom";
-import MainContent from "../components/MainContent/MainContent";
-import SideNav from "../components/SideNav/SideNav";
+import MainContent from "./MainContent/MainContent";
+import SideNav from "../features/side-navigation/components/SideNav/SideNav";
 import { Header } from "./Header";
 
 const Layout = () => {

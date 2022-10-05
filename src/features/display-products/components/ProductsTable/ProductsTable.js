@@ -1,4 +1,4 @@
-import { useProductsTable } from "../../../hooks/useProductTable/useProductsTable";
+import { useProductsTable } from "../../../../hooks/useProductTable/useProductsTable";
 import { DataGrid } from "@mui/x-data-grid";
 import { Box, Button } from "@mui/material";
 

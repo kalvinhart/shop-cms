@@ -1,7 +1,7 @@
-import { useEditProduct } from "../../../hooks/useEditProduct/useEditProduct";
+import { useEditProduct } from "../../../../hooks/useEditProduct/useEditProduct";
 
 import { Typography } from "@mui/material";
-import Form from "../../shared/Form/Form";
+import Form from "../../../../common/components/Form/Form";
 import ProductForm from "../ProductForm/ProductForm";
 
 const EditProduct = () => {

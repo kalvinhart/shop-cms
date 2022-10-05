@@ -1,7 +1,7 @@
-import { useNewProduct } from "../../../hooks/useNewProduct/useNewProduct";
+import { useNewProduct } from "../../../../hooks/useNewProduct/useNewProduct";
 
 import { Typography } from "@mui/material";
-import Form from "../../shared/Form/Form";
+import Form from "../../../../common/components/Form/Form";
 import ProductForm from "../ProductForm/ProductForm";
 
 const NewProduct = () => {

@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import { useAppDispatch } from "../../app/hooks/useAppDispatch";
-import { useAuth } from "../../hooks/useAuth/useAuth";
+import { useAppDispatch } from "../../../../app/hooks/useAppDispatch";
+import { useAuth } from "../../../../hooks/useAuth/useAuth";
 
-import { signIn } from "../../app/slices/authSlice";
+import { signIn } from "../../../../app/slices/authSlice";
 
 import { Avatar, Button, Container, TextField, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import { UserCredentials } from "../../types/Auth";
+import { UserCredentials } from "../../../../types/Auth";
 
 type LocationState = {
   from: {

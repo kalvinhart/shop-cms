@@ -9,9 +9,9 @@ import {
   Typography,
 } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
-import FormInputText from "../../shared/FormInputText/FormInputText";
-import FormInputSelect from "../../shared/FormInputSelect/FormInputSelect";
-import FormInputFile from "../../shared/FormInputFile/FormInputFile";
+import FormInputText from "../../../../common/components/FormInputText/FormInputText";
+import FormInputSelect from "../../../../common/components/FormInputSelect/FormInputSelect";
+import FormInputFile from "../../../../common/components/FormInputFile/FormInputFile";
 
 const ProductForm = ({ control, errors, image }) => {
   const { categories } = useSelector((state) => state.category);

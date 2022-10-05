@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 
-import FormInputText from "../../shared/FormInputText/FormInputText";
+import FormInputText from "../../../../common/components/FormInputText/FormInputText";
 import { useSelector } from "react-redux";
 
 const CategoryForm = ({ control, errors }) => {

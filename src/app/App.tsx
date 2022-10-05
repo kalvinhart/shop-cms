@@ -5,12 +5,12 @@ import { store } from "./store";
 
 import CssBaseline from "@mui/material/CssBaseline";
 
-import Dashboard from "../components/Dashboard/Dashboard";
-import Products from "../components/Products/Products";
-import Categories from "../components/Categories/Categories";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import Products from "../pages/Products/Products";
+import Categories from "../pages/Categories/Categories";
 import Layout from "../layout/Layout";
-import RequireAuth from "../components/RequireAuth/RequireAuth";
-import { Login } from "../components/Login";
+import RequireAuth from "../routing/components/RequireAuth/RequireAuth";
+import Login from "../pages/Login/Login";
 
 const App = () => {
   return (
