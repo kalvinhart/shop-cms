@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loadCategories } from "../../slices/categorySlice";
-import { loadAllProducts } from "../../slices/productSlice";
+import { loadCategories } from "../../app/slices/categorySlice";
+import { loadAllProducts } from "../../app/slices/productSlice";
 
 export const useProductsPage = () => {
   const dispatch = useDispatch();

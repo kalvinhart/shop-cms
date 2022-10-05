@@ -5,7 +5,7 @@ export const useForm = (defaultValues, reset, isSubmitSuccessful) => {
     reset({
       ...defaultValues,
     });
-  }, [defaultValues]);
+  }, [reset, defaultValues]);
 
   useEffect(() => {
     if (isSubmitSuccessful) {
