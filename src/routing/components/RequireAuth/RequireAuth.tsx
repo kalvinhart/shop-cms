@@ -1,6 +1,6 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom";
-import { useAuth } from "../../../hooks/useAuth/useAuth";
-import { ROLES } from "../../../utils/userRoles";
+import { useAuth } from "../../../features/authentication/hooks/useAuth";
+import { ROLES } from "../../../features/authentication/utils/userRoles";
 
 type RoleKeys = keyof typeof ROLES;
 

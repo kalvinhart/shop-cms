@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-import { deleteProducts, deleteSingleProduct } from "../../app/slices/productSlice";
+import { deleteProducts, deleteSingleProduct } from "../../../app/slices/productSlice";
 
 export const useProductsTable = (products) => {
   const dispatch = useDispatch();

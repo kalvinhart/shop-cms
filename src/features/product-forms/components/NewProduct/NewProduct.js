@@ -1,4 +1,4 @@
-import { useNewProduct } from "../../../../hooks/useNewProduct/useNewProduct";
+import { useNewProduct } from "../../hooks/useNewProduct/useNewProduct";
 
 import { Typography } from "@mui/material";
 import Form from "../../../../common/components/Form/Form";

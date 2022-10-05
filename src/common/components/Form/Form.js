@@ -1,4 +1,4 @@
-import { useForm as useFormHook } from "../../../hooks/useForm/useForm";
+import { useForm as useFormHook } from "../../hooks/useForm";
 import { useForm } from "react-hook-form";
 import { Box } from "@mui/material";
 

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { useAppDispatch } from "../../../../app/hooks/useAppDispatch";
-import { useAuth } from "../../../../hooks/useAuth/useAuth";
+import { useAuth } from "../../hooks/useAuth";
 
 import { signIn } from "../../../../app/slices/authSlice";
 

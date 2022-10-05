@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { createNewProduct } from "../../app/slices/productSlice";
+import { createNewProduct } from "../../../../app/slices/productSlice";
 
 export const useNewProduct = () => {
   const dispatch = useDispatch();

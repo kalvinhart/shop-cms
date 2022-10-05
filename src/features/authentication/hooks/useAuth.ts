@@ -1,11 +1,11 @@
 import { useCallback } from "react";
 
-import { useAppDispatch } from "../../app/hooks/useAppDispatch";
-import { useAppSelector } from "../../app/hooks/useAppSelector";
+import { useAppDispatch } from "../../../app/hooks/useAppDispatch";
+import { useAppSelector } from "../../../app/hooks/useAppSelector";
 
-import { signIn } from "../../app/slices/authSlice";
+import { signIn } from "../../../app/slices/authSlice";
 
-import { UserCredentials } from "../../types/Auth";
+import { UserCredentials } from "../../../types/Auth";
 
 export const useAuth = () => {
   const dispatch = useAppDispatch();

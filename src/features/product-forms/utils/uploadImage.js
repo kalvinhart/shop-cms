@@ -1,4 +1,4 @@
-import Axios from "../utils/axios";
+import Axios from "../../../utils/axios";
 
 export const uploadImage = async (product, image) => {
   if (typeof image !== "object") return product;
